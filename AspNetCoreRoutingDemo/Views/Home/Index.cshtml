@@ -1,0 +1,27 @@
+﻿
+@using AspNetCoreRoutingDemo.Models
+@using AspNetCoreRoutingDemo.Services
+
+@model IBookStore
+
+@section Head {
+  <title>Index</title>
+}
+
+<div>
+  <h1>Index</h1>
+  <hr />
+  <a asp-action="AddBook">Add Book</a>
+  <hr />
+  <p>By Number link:</p>
+  @foreach(var book in Model.GetBooks())
+  {
+    <a asp-action="GetBookByNumber" asp-route-Number="@book.Number">@book.Title</a><br />
+  }
+  <br />
+  <p>By Slug link:</p>
+  @foreach (var book in Model.GetBooks())
+  {
+    <a asp-action="GetBookBySlug" asp-route-Slug="@book.Slug">@book.Title</a><br />
+  }
+</div>

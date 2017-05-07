@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AspNetCoreRoutingDemo.Models;
+using System.Text.RegularExpressions;
+
+namespace AspNetCoreRoutingDemo.Services
+{
+  public class BookStore : IBookStore
+  {
+    List<Book> bookList;
+
+    public BookStore()
+    {
+      bookList = new List<Book>();
+    }
+
+    public void AddBook(Book book)
+    {
+      book.Slug = Regex.Replace(book.Title, @"\s+", "");
+
+      bookList.Add(book);
+    }
+
+    public Book GetBook(int number)
+    {
+      return bookList.Where(b => b.Number == number).FirstOrDefault();
+    }
+
+    public Book GetBook(string slug)
+    {
+      return bookList.Where(b => b.Slug == slug).FirstOrDefault();
+    }
+
+    public IEnumerable<Book> GetBooks()
+    {
+      return bookList;
+    }
+  }
+}

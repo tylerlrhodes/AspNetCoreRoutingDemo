@@ -1,0 +1,29 @@
+﻿
+@section Head {
+  <title>Add Book</title>
+}
+
+@using AspNetCoreRoutingDemo.Models
+@model Book
+
+<div>
+  <form asp-action="AddBook" method="post">
+    <table>
+      <tr>
+        <td><label asp-for="Title"></label></td>
+        <td><input asp-for="Title" /></td>
+      </tr>
+      <tr>
+        <td><label asp-for="Author"></label></td>
+        <td><input asp-for="Author" /></td>
+      </tr>
+      <tr>
+        <td><label asp-for="Number"></label></td>
+        <td><input asp-for="Number" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Add Book</button></td>
+      </tr>
+    </table>
+  </form>
+</div>

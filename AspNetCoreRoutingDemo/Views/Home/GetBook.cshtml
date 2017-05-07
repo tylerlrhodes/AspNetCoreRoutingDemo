@@ -1,0 +1,16 @@
+﻿
+@using AspNetCoreRoutingDemo.Models
+
+@model Book
+
+@section head {
+  <title>Book Details - @Model.Title</title>
+}
+
+<h1>@Model.Title</h1>
+<h3>@Model.Author</h3>
+<h3>@Model.Number</h3>
+
+<br />
+
+<a asp-action="Index">Index</a>
