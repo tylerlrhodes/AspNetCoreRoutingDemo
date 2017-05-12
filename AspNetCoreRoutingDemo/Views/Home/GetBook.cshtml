@@ -1,5 +1,7 @@
 ﻿
 @using AspNetCoreRoutingDemo.Models
+@using System.Text.Encodings.Web;
+@using System.Net;
 
 @model Book
 
@@ -10,6 +12,7 @@
 <h1>@Model.Title</h1>
 <h3>@Model.Author</h3>
 <h3>@Model.Number</h3>
+<h3>@WebUtility.HtmlDecode(Model.Slug)</h3>
 
 <br />
 

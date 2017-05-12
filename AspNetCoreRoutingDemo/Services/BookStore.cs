@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreRoutingDemo.Models;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace AspNetCoreRoutingDemo.Services
@@ -18,8 +19,12 @@ namespace AspNetCoreRoutingDemo.Services
 
     public void AddBook(Book book)
     {
-      book.Slug = Regex.Replace(book.Title, @"\s+", "");
+      //book.Slug = Regex.Replace(book.Title, @"\s+", "");
 
+      //book.Slug = Regex.Unescape(book.Title);
+
+      book.Slug = WebUtility.HtmlEncode(book.Slug);
+      
       bookList.Add(book);
     }
 
